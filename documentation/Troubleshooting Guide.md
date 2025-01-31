@@ -99,7 +99,8 @@ $kubectl get svc --all-namespaces -o wide*
 -	Common Solutions: Update the config as per the following instruction
 *$kubectl edit configmap -n omec amf*
 In networkFeatureSupport5GS, Change IMSVoPS From 0 to 1 as shown below
- ![IMS configuration](./documentation/images/Figure1_imsVoPS.png)
+ ![IMS configuration](./images/Figure1_imsVoPS.png)
+
  
 ###	Error/Issue 17
 -	Issue Title: Pod status is not updating
