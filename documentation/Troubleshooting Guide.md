@@ -99,7 +99,7 @@ $kubectl get svc --all-namespaces -o wide*
 -	Common Solutions: Update the config as per the following instruction
 *$kubectl edit configmap -n omec amf*
 In networkFeatureSupport5GS, Change IMSVoPS From 0 to 1 as shown below
- ![IMS configuration](Figure1_imsVoPS)
+ ![IMS configuration](./documentation/images/Figure1_imsVoPS.png)
  
 ###	Error/Issue 17
 -	Issue Title: Pod status is not updating
@@ -205,7 +205,8 @@ The following command lists all namespaces
 
 | **Document Name** | **Purpose** | **Link** |
 |--|--|--|
-| User Guide | Quick start guide | |
-| Installation Guide | Installation of SD-Core |
-| Troubleshooting Guide  | Troubleshooting guide for SD-Core | |
-| Developer Guide | Guide for SD-Core developers | |
+| Installation Guide | Installation of SD-Core | [Click here](./Installation%20Guide.md) |
+| Developer Guide | Guide for SD-Core developers | [Click Here](./Developer%20Guide.md)|
+| User Guide | Quick user guide | [Click Here](./User%20Guide.md)  |
+| API Guide | API guide | [Click here](./API%20Guide.md)|
+| Troubleshooting Guide  | Troubleshooting guide for SD-Core | [Click here](./Troubleshooting%20Guide.md)|
