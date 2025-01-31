@@ -4,7 +4,7 @@ IOS-MCN CORE Sub-Project Release
 
 [Getting Started](./documentation/Getting%20Started.md)
 
-[User Guide] (./documentation/User%20Guide.md)
+[User Guide](./documentation/User%20Guide.md)
 
 [Installation Guide](./documentation/Installation%20Guide.md)
 
