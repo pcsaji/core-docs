@@ -155,7 +155,7 @@ _LANG="en_IN.UTF-8"_
 
 _LANGUAGE="en_IN:en"_
 
-<![if !vml]>![](file:///installimage002.gif)<![if !vml]>![](file:///installimage004.gif)<![if !vml]>![](file:///installimage006.jpg)
+![Parameter settings in var/main.yml](./images/install/fig1-parameters.png)
 
 Figure 1: Parameter settings in var/main.yml
 
@@ -171,7 +171,8 @@ _kubectl get pods --all-namespaces_
 
 The successful output looks like
 
-<![if !vml]>![](file:///installimage008.jpg)
+
+![Output of Kubernetes installation](./images/install/fig2-output-kubernetes.png)
 
 Figure 2:Output of Kubernetes installation
 
@@ -217,15 +218,17 @@ _sudo docker login ghcr.io -u ios5gn --password-stdin <<<  ghp_Sb0OuvbtSu8DRGouz
 
 Modify the subscribers block of the omec-sub-provision section in file deps/5gc/roles/core/templates/ sdcore-5g-values.yaml to record the IMSI, OPc, and Key values configured onto your SIM cards. For example, the following code block adds IMSIs between 001010000000001 and 001010000000003
 
-<![if !vml]>![](file:///installimage010.gif)
+
+![](./images/install/fig3-config-sd-core.png)
 
 Further down in the same omec-sub-provision section you will find two other blocks that also need to be edited. The first, device-groups, assigns IMSIs to _Device Groups_. You will need to reenter the individual IMSIs from the subscribers block that will be part of the device-group. Also, update the DNS.
 
-<![if !vml]>![](file:///installimage012.gif)
+
+![](./images/install/fig4-config-sd-core.png)
 
 The second block, network-slices, sets various parameters associated with the _Slices_ that connect device groups to applications. Here, you will need to reenter the PLMN information
 
-<![if !vml]>![](file:///installimage014.gif)
+![](./images/install/fig5-config-sd-core.png)
 
 ###  Install SD Core
 
@@ -237,7 +240,8 @@ The successful outcome shall be verified using the following command
 
 _kubectl get pods -n ios-mcn_
 
-<![if !vml]>![](file:///installimage016.jpg)
+
+![](./images/install/fig6-install-sd-core.png)
 
 _Fig.3 Success state of SD-Core installation_
 
@@ -247,7 +251,7 @@ $ kubectl edit cm amf -n ios-mcn
 
 Update Sctplb to false and change mcc,mnc,sst and sd based on the  sdcore-5g-values.yaml configuration
 
-<![if !vml]>![](file:///installimage018.gif)
+![](./images/install/fig7-loadbalancer.png)
 
 Delete amf pod for update
 
@@ -281,7 +285,10 @@ _sudo ip route add 192.168.252.0/24 via <core_ip>_
 
 There are two bridges that connect the physical interface with the UPF container. The access bridge connects the UPF downstream to the RAN (this corresponds to 3GPP’s N3 interface) and is assigned IP subnet 192.168.252.0/24 . The core bridge connects the UPF upstream to the Internet (this corresponds to 3GPP’s N6 interface) and is assigned IP subnet 192.168.250.0/24 .
 
-<![if !vml]>![](file:///installimage020.gif)The above output from ip shows the two interfaces visible to the server, but running outside
+
+![](./images/install/fig8-verify-network.png)
+The above output from ip shows the two interfaces visible to the server, but running outside
+
 
 the container.
 
@@ -289,13 +296,14 @@ the container.
 
 kubectl can be used to see what’s running inside the UPF, where bessd is the name of the container image that implements the UPF, and access and core are the last two interfaces shown below:
 
-<![if !vml]>![](file:///installimage022.gif)
+
+![](./images/install/fig9-.png)
 
 When packets flowing upstream from the gNB arrive on the server’s physical interface, they need to be forwarded over the access interface. This is done by having the following kernel route installed, which should be the case if your Aether installation was successful.
 
 _route -n | grep "Iface\|access”_
 
-<![if !vml]>![](file:///installimage024.gif)
+![](./images/install/fig10-.png)
 
 Within the UPF, the correct behavior is to forward packets between the access and core
 
@@ -303,9 +311,10 @@ interfaces. Upstream packets arriving on the access interface have their GTP hea
 
 removed and the raw IP packets are forwarded to the core interface. The routes inside the UPF’s bessd container will look something like this:
 
-<![if !vml]>![](file:///installimage026.gif)
 
-<![if !vml]>![](file:///installimage028.gif)
+![](./images/install/fig11-.png)
+![](./images/install/fig12.png)
+
 
 The first rule above matches packets to the UEs on the 172.250.0.0/16 subnet. The next hop for these packets is the core IP address inside the UPF. The second rule says that next hop address is reachable on the core interface outside the UPF. As a result, the downstream packets arrive in the UPF where they are GTP-encapsulated with the IP address of the gNB.
 
@@ -355,7 +364,7 @@ _ip addr_
 
 Ensure the following four interfaces are created: lo, eth0, access, and core.
 
-<![if !vml]>![](file:///installimage030.gif)
+![](./images/install/fig13.png)
 
 ####  Verify Routing Table
 
@@ -363,15 +372,15 @@ Check the routing table to ensure it matches the expected configuration
 
 _ip r_
 
-<![if !vml]>![](file:///installimage032.gif)
+![](./images/install/fig14.png)
 
 ####  Ping test
 
-### <![if !vml]>![](file:///installimage034.gif)
+![](./images/install/fig15.png)
 
 ####  Check and Update ARP Entries
 
-<![if !vml]>![](file:///installimage036.gif)
+![](./images/install/fig16.png)
 
 Ensure that the ARP entries for access and core interfaces have the correct MAC addresses. If the MAC addresses do not match, update them as follows:
 
@@ -385,9 +394,8 @@ Replace <mac-access> and <mac-core> with the actual MAC addresses of the access 
 
 | **Document Name** | **Purpose** | **Link** |
 |--|--|--|
-| User Guide | Quick start guide | |
-| Installation Guide | Installation of SD-Core |
-| Troubleshooting Guide  | Troubleshooting guide for SD-Core | |
-| Developer Guide | Guide for SD-Core developers | |
-
-
+| Developer Guide | Guide for SD-Core developers | [Click Here](./Developer%20Guide.md)|
+| User Guide | Quick user guide | [Click Here](./User%20Guide.md)  |
+| API Guide | API guide | [Click here](./API%20Guide.md)|
+| Troubleshooting Guide  | Troubleshooting guide for SD-Core | [Click here](./Troubleshooting%20Guide.md)|
+| Installation Guide | Installation of SD-Core | [Click here](./Installation%20Guide.md) |
