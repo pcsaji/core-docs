@@ -43,30 +43,30 @@ _For private repo: The git command will ask for username and password. Provide t
 - Setup jobs for building, unit test, creating Docker image and pushing Docker image to Docker Hub (Docker build and Docker push commands will be present in Makefile of all the network functions).
 - Follow the steps in [Using jobs in a workflow](https://docs.github.com/en/actions/using-jobs/using-jobs-in-a-workflow#overview) for getting an idea on creating jobs.
 
-![Figure 1: Sample workflow file](Figure.1)
+![Figure 1: Sample workflow file](./images/devel/fig1-sample-workflow.png)
 
 -	For building the network function image, refer the Makefile located in the root of the repository and try to invoke the Docker build command as a GitHub actions job.
  
-![Figure 2: docker-build command present in Makefile]()
+![Figure 2: docker-build command present in Makefile](./images/devel/fig2-dockerbuild.png)
  
-![Figure 3: Invoke make docker-build inside a job]()
+![Figure 3: Invoke make docker-build inside a job](./images/devel/fig3-invokedocker.png)
 -	For pushing the job to DockerHub, refer the Makefile and try to invoke the Docker push command as a GitHub actions job.  Don’t forget to set environments variables mentioned in the Docker push command.
  
-![Figure 4: docker-push command present in Makefile]()
+![Figure 4: docker-push command present in Makefile](./images/devel/fig4-dockerpush.png)
  
-![Figure 5: Invoke make docker-push inside a job]()
+![Figure 5: Invoke make docker-push inside a job](./images/devel/fig5-invoke-make.png)
  
-![Figure 6: Registry and repository details]()
+![Figure 6: Registry and repository details](./images/devel/fig6-registry.png)
 - Alternative method of pushing Docker image without using Makefile command is to use Docker image already built and push it to the DockerHub manually using Docker commands.
  
-![Figure 7: Tag and push already build image to DockerHub]()
+![Figure 7: Tag and push already build image to DockerHub](./images/devel/fig7-tag-push.png)
 -	Try to run the jobs in sequential order using ‘needs’ keyword.
  
-![Figure 8: Usage of needs]()
+![Figure 8: Usage of needs](./images/devel/fig8-usage-needs.png)
 -	Use JayaramRCDAC/amf for reference.
 -	To add Docker credentials as secrets, follow Using secrets in GitHub Actions
  
-![Figure 9: Setting secrets]()
+![Figure 9: Setting secrets](./images/devel/fig9-setting-secrets.png)
 -	GitHub provides a marketplace where pre-built actions are present to use in the workflows.
 Running Workflow
 -	Committing the workflow file to a branch in the repository triggers the push event and runs the workflow.
@@ -74,9 +74,9 @@ Monitoring Workflow
 -	Monitor the progress of workflows in the Actions tab of the repository.
 -	Check the status of each workflow run, view logs, and debug any issues that arise.
  
-![Figure 10: Sample workflow pipeline]()
+![Figure 10: Sample workflow pipeline](./images/devel/fig10-sampleworkflow.png)
  
-![Figure 11: Image pushed to DockerHub]()
+![Figure 11: Image pushed to DockerHub](./images/devel/fig11-image-pus.png)
 Integration with IDE
 -	Download and setup VSCode IDE.
 -	Clone a repository using command palette (> git clone).
@@ -84,7 +84,7 @@ Integration with IDE
 -	Sign in with the GitHub account and when prompted allow GitHub Actions access to the GitHub account.
 -	Push some changes to master (refer GitHub guide document) & the triggered workflow will be visible at GitHub actions side panel.
  
-![Figure 12: Workflow log inside VSCode]()
+![Figure 12: Workflow log inside VSCode](./images/devel/fig12-workflow.png)
 
 
 
@@ -106,14 +106,14 @@ Integration with IDE
 
 	_kubectl get pods -n ios-mcn_
 
-![Figure 13: pods status]()
+![Figure 13: pods status](./images/devel/fig13-pod-stats.png)
 
 ## Related Artifacts & links
 
 | **Document Name** | **Purpose** | **Link** |
 |--|--|--|
-| User Guide | Quick start guide | |
-| Installation Guide | Installation of SD-Core |
-| Troubleshooting Guide  | Troubleshooting guide for SD-Core | |
-| Developer Guide | Guide for SD-Core developers | |
-
+| User Guide | Quick user guide | [Click Here](./User%20Guide.md)  |
+| API Guide | API guide | [Click here](./API%20Guide.md)|
+| Troubleshooting Guide  | Troubleshooting guide for SD-Core | [Click here](./Troubleshooting%20Guide.md)|
+| Installation Guide | Installation of SD-Core | [Click here](./Installation%20Guide.md) |
+| Developer Guide | Guide for SD-Core developers | [Click Here](./Developer%20Guide.md)|
