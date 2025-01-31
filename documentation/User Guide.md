@@ -59,10 +59,10 @@ Intel IA64 platforms with minimum of 4 core CPU and 16GB RAM
 
 | **Document Name** | **Purpose** | **Link** |
 |--|--|--|
-| Installation Guide | Installation of SD-Core |
-| Troubleshooting Guide  | Troubleshooting guide for SD-Core | |
-| User Guide | Quick start guide | |
-| Developer Guide | Guide for SD-Core developers | |
+| Installation Guide | Installation of SD-Core | [Click here](./Installation%20Guide.md) |
+| Troubleshooting Guide  | Troubleshooting guide for SD-Core | [Click here](./Troubleshooting%20Guide.md)|
+| API Guide | API guide | [Click here](./API%20Guide.md)|
+| Developer Guide | Guide for SD-Core developers | [Click Here](./Developer%20Guide.md)|
 
 
 
