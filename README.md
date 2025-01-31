@@ -1,2 +1,3 @@
 # core-docs
-Core documentation
+IOS-MCN CORE Sub-Project Release
+
